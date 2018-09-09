@@ -1,0 +1,13 @@
+package luka.behaviorTrees;
+
+public class BehaviorTreeNode {
+	public enum NodeType 
+	{
+		Leaf,
+		Composite,
+		Decorator
+	}
+	
+	
+}
+

@@ -1,0 +1,10 @@
+package luka.behaviorTrees;
+
+public enum BehaviorTreeType 
+{
+	
+}
+
+public class BehaviorTreeNode {
+
+}

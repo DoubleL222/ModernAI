@@ -1,0 +1,8 @@
+package luka.behaviorTrees;
+
+import luka.behaviorTrees.BehaviorTreeNode;
+
+public class CompositeNode extends BehaviorTreeNode{
+	private CompositeType myCompositeType;
+	
+}
