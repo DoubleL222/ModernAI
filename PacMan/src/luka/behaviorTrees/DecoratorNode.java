@@ -1,14 +1,11 @@
 package luka.behaviorTrees;
 
-import luka.behaviorTrees.BehaviorTreeNode;
+import luka.behaviorTrees.BehaviorTreeNode.DecoratorType;
 
-public class DecoratorNode extends BehaviorTreeNode {
-	public DecoratorNode() {
-		super();
-		myNodeType = myNodeType.Decorator;
-		// TODO Auto-generated constructor stub
+public class DecoratorNode {
+	public DecoratorNode(DecoratorType _type) 
+	{
+		myDecoratorType = _type;
 	}
-
-	private DecoratorType myDecoratorType;
-	
+	public DecoratorType myDecoratorType;
 }

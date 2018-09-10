@@ -1,6 +1,6 @@
 package luka.behaviorTrees;
 
-public class BehaviorTreeNode {
+public abstract class BehaviorTreeNode {
 	public enum NodeType 
 	{
 		Leaf,
@@ -25,13 +25,9 @@ public class BehaviorTreeNode {
 	
 	protected NodeType myNodeType;
 	
-	public BehaviorTreeNode() {
-	}
+	public abstract boolean Activate();
 	
-	public boolean QuerryForResult() 
-	{
-		return false;
-	}
+	public BehaviorTreeNode() {};
 }
 
 
