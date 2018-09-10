@@ -1,5 +1,0 @@
-package luka.behaviorTrees;
-
-public class DecoratorNode extends BehaviorTreeNode {
-
-}

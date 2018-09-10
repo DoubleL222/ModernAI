@@ -1,7 +1,0 @@
-package luka.behaviorTrees;
-
-import luka.behaviorTrees.BehaviorTreeNode.DecoratorType;
-
-public class DecoratorNode extends BehaviorTreeNode {
-	private DecoratorType myDecoratorType;
-}
