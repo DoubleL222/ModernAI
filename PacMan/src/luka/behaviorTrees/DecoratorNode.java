@@ -3,8 +3,9 @@ package luka.behaviorTrees;
 import luka.behaviorTrees.BehaviorTreeNode;
 
 public class DecoratorNode extends BehaviorTreeNode {
-	public DecoratorNode(NodeType myNodeType) {
-		super(myNodeType);
+	public DecoratorNode() {
+		super();
+		myNodeType = myNodeType.Decorator;
 		// TODO Auto-generated constructor stub
 	}
 

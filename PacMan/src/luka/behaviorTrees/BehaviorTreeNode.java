@@ -23,10 +23,9 @@ public class BehaviorTreeNode {
 		RepeatUntilFail
 	}
 	
-	private NodeType myNodeType;
+	protected NodeType myNodeType;
 	
-	public BehaviorTreeNode(NodeType myNodeType) {
-		this.myNodeType = myNodeType;
+	public BehaviorTreeNode() {
 	}
 	
 	public boolean QuerryForResult() 
