@@ -1,6 +1,6 @@
 package luka.behaviorTrees;
 
-public class LeafNode extends BehaviorTreeNode {
+public abstract class LeafNode extends BehaviorTreeNode {
 
 	public LeafNode() {
 		super();
@@ -9,9 +9,5 @@ public class LeafNode extends BehaviorTreeNode {
 	}
 
 	@Override
-	public boolean Activate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+	public abstract boolean Activate();
 }

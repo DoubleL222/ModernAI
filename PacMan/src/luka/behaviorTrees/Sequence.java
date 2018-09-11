@@ -11,17 +11,25 @@ public class Sequence extends CompositeNode{
 
 	@Override
 	public boolean Activate() {
-		for(ChildPointer _cp : children) 
+		System.out.println("Activate Sequence");
+		if(children != null) 
 		{
-			boolean childResponse = _cp.child.Activate();
-			
-			if(_cp.decorators != null) {
-				childResponse = HandleDecorators(_cp, childResponse);
-			}
-			
-			if(!childResponse) 
+			if(children.size()>0) 
 			{
-				return false;
+				for(ChildPointer _cp : children) 
+				{
+					boolean childResponse = _cp.child.Activate();
+					
+					if(_cp.decorators != null) {
+						childResponse = HandleDecorators(_cp, childResponse);
+					}
+					
+					if(!childResponse) 
+					{
+						return false;
+					}
+				}
+				return true;
 			}
 		}
 		return true;

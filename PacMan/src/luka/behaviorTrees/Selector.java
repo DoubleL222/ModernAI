@@ -9,21 +9,28 @@ public class Selector extends CompositeNode{
 
 	@Override
 	public boolean Activate() {
-		//TODO Make DECORATORS count
-		for(ChildPointer _cp : children) 
+		System.out.println("Activate Selector");
+		if(children != null) 
 		{
-			boolean childResponse = _cp.child.Activate();
-			
-			if(_cp.decorators != null) {
-				childResponse = HandleDecorators(_cp, childResponse);
-			}
-			
-			if(childResponse) 
+			if(children.size()>0) 
 			{
-				return true;
+				for(ChildPointer _cp : children) 
+				{
+					boolean childResponse = _cp.child.Activate();
+					
+					if(_cp.decorators != null) {
+						childResponse = HandleDecorators(_cp, childResponse);
+					}
+					
+					if(childResponse) 
+					{
+						return true;
+					}
+				}
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 }
