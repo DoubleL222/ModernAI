@@ -9,7 +9,7 @@ import java.util.Random;
 public class UppercaseGA {
 	private final static float CHANCETOMUTATE = 0.2f;
 	private final static int POPULATION = 100;
-	private final static int GENOTYPELENGTH = 30;
+	private final static int GENOTYPELENGTH = 50;
 	private final static int ELITEPERCENTAGE = 10;
 	
 	private class Genotype<T> implements Comparable<Genotype<T>>
@@ -186,18 +186,20 @@ public class UppercaseGA {
 	{
 		UppercaseGA uGa = new UppercaseGA();
 		Vector<int[]> population = uGa.GeneratePopulation(GENOTYPELENGTH, POPULATION);
-		//uGa.PrintPopulation(population);
+		System.out.println("Population size: " + population.size());
+		uGa.PrintPopulation(population);
 		Vector<int[]> elites = uGa.getElitePopulation(ELITEPERCENTAGE, population);
 		int generation = 0;
 		System.out.println("ELITES");
 		uGa.PrintPopulation(elites);
-		
+		System.out.println("Population size: " + population.size());
 		while(uGa.GetMaxFitness(elites)<1) 
 		{
 			System.out.println();
 			System.out.println("-----GENERATION "+generation+"-------");
 			System.out.println();
 			population = uGa.MutateElite(elites, POPULATION);
+			System.out.println("Population size: " + population.size());
 			elites = uGa.getElitePopulation(ELITEPERCENTAGE, population);
 			generation++;
 			
