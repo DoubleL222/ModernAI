@@ -33,8 +33,8 @@ public class NeuralNetworkConnection {
 		from = _from;
 		to = _to;
 		
-		_from.setOut(this);
-		_to.setIn(this);
+		_from.AddOutConnection(this);
+		_to.AddInConnection(this);
 	}
 
 	public NeuralNetworkConnection(NeuralNetworkNode from, NeuralNetworkNode to, float weight) {
@@ -42,7 +42,7 @@ public class NeuralNetworkConnection {
 		this.to = to;
 		this.weight = weight;
 		
-		from.setOut(this);
-		to.setIn(this);
+		from.AddOutConnection(this);
+		to.AddInConnection(this);
 	}
 }
