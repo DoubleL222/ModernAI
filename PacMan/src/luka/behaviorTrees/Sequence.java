@@ -11,7 +11,6 @@ public class Sequence extends CompositeNode{
 
 	@Override
 	public boolean Activate() {
-		System.out.println("Activate Sequence");
 		if(children != null) 
 		{
 			if(children.size()>0) 

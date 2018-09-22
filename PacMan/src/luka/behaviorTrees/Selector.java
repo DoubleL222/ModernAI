@@ -9,7 +9,6 @@ public class Selector extends CompositeNode{
 
 	@Override
 	public boolean Activate() {
-		System.out.println("Activate Selector");
 		if(children != null) 
 		{
 			if(children.size()>0) 

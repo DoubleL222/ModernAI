@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class UppercaseGA {
-	private final static float CHANCETOMUTATE = 0.2f;
+	private final static float CHANCETOMUTATE = 0.05f;
 	private final static int POPULATION = 100;
 	private final static int GENOTYPELENGTH = 50;
 	private final static int ELITEPERCENTAGE = 10;

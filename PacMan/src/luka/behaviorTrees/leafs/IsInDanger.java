@@ -16,7 +16,6 @@ public class IsInDanger extends LeafNode {
 	
 	@Override
 	public boolean Activate() {
-		System.out.println("Check if in danger");
 		int minDistance = Integer.MAX_VALUE;
 		int rnd = new Random().nextInt(GHOST.values().length);
 		GHOST closestGhost = GHOST.values()[rnd];
@@ -28,8 +27,7 @@ public class IsInDanger extends LeafNode {
 		{
 			if(game.getGhostCurrentNodeIndex(ghost) != game.getGhostInitialNodeIndex() && !game.isGhostEdible(ghost)) {
 				int currDist = game.getShortestPathDistance(pacmanNodeIndex, game.getGhostCurrentNodeIndex(ghost));
-				System.out.println("Distance from ghost "+currDist);
-				if(currDist < minDistance) 
+				if(currDist != -1 && currDist < minDistance) 
 				{
 					minDistance = currDist;
 					closestGhost = ghost;
@@ -39,6 +37,7 @@ public class IsInDanger extends LeafNode {
 		
 		if(minDistance < 0 || minDistance == Integer.MAX_VALUE) 
 		{
+			BehaviorTreeManager.getInstance().setRunning(false);
 			return false;
 		}
 		
@@ -46,10 +45,15 @@ public class IsInDanger extends LeafNode {
 		
 		if(minDistance <= minDistForDanger) 
 		{
+			System.out.println("IS IN DANGER");
+			BehaviorTreeManager.getInstance().setRunning(true);
+			BehaviorTreeManager.getInstance().setRunningStartTime(System.currentTimeMillis());
+			//System.out.print("current time in milis " + System.currentTimeMillis());
 			return true;
 		}
 		else 
 		{
+			BehaviorTreeManager.getInstance().setRunning(false);
 			return false;
 		}
 	}
