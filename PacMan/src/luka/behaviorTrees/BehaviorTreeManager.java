@@ -61,7 +61,7 @@ public class BehaviorTreeManager {
 	private BehaviorTreeManager() 
 	{
 		// FIRST TREE
-		/* 
+		///* 
 		Selector top = new Selector();
 		Sequence dangerZone = new Sequence();
 		dangerZone.AddChild(new IsInDanger(30));
@@ -74,9 +74,9 @@ public class BehaviorTreeManager {
 		top.AddChild(pillColector);
 		
 		setRoot(top);
-		*/
+		//*/
 		
-		///* 
+		/* 
 		Selector top = new Selector();
 		Selector dangerZone = new Selector();
 		dangerZone.AddChild(new PanicRun(500.0f));
@@ -89,7 +89,7 @@ public class BehaviorTreeManager {
 		top.AddChild(pillColector);
 		
 		setRoot(top);
-		//*/
+		*/
 	}
 	
 	public Game getGame() {
