@@ -11,6 +11,8 @@ import java.util.EnumMap;
 import java.util.Random;
 
 import luka.behaviorTrees.controller.BTPacMan;
+import luka.reinforcementlearning.RLManager;
+import luka.reinforcementlearning.RLPacMan;
 import pacman.controllers.Controller;
 import pacman.controllers.HumanController;
 import pacman.controllers.KeyBoardInput;
@@ -66,7 +68,9 @@ public class Executor
 //		exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
 //		exec.runGameTimed(new StarterPacMan(),new StarterGhosts(),visual);
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
-		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
+		//exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
+		exec.runGameTimed(new RLPacMan(),new StarterGhosts(), visual);
+//		exec.runExperiment(new RLPacMan(),new StarterGhosts(), 1000);
 		//*/
 		
 		/*
