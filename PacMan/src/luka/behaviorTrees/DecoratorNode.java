@@ -1,6 +1,6 @@
 package luka.behaviorTrees;
 
-import luka.behaviorTrees.BehaviorTreeNode.DecoratorType;
+import luka.behaviorTrees.BTNode.DecoratorType;
 
 public class DecoratorNode {
 	public DecoratorNode(DecoratorType _type) 

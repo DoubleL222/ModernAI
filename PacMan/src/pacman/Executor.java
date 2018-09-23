@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Random;
 
-import luka.behaviorTrees.controller.BehaviorTreePacMan;
+import luka.behaviorTrees.controller.BTPacMan;
 import pacman.controllers.Controller;
 import pacman.controllers.HumanController;
 import pacman.controllers.KeyBoardInput;
@@ -66,7 +66,7 @@ public class Executor
 //		exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
 //		exec.runGameTimed(new StarterPacMan(),new StarterGhosts(),visual);
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
-		exec.runGameTimed(new BehaviorTreePacMan(),new StarterGhosts(),visual);
+		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
 		//*/
 		
 		/*

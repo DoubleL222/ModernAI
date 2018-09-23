@@ -2,7 +2,7 @@ package luka.behaviorTrees.leafs;
 
 import java.awt.Color;
 
-import luka.behaviorTrees.BehaviorTreeManager;
+import luka.behaviorTrees.BTManager;
 import luka.behaviorTrees.LeafNode;
 import pacman.game.Game;
 import pacman.game.GameView;
@@ -12,7 +12,7 @@ public class MoveTowardsNearestPill extends LeafNode{
 
 	@Override
 	public boolean Activate() {
-		Game game = BehaviorTreeManager.getInstance().getGame();
+		Game game = BTManager.getInstance().getGame();
 		//get all active pills
 		int[] activePills=game.getActivePillsIndices();
 		
@@ -28,7 +28,7 @@ public class MoveTowardsNearestPill extends LeafNode{
 		for(int i=0;i<activePowerPills.length;i++)
 			targetNodeIndices[activePills.length+i]=activePowerPills[i];
 		int closestPill = game.getClosestNodeIndexFromNodeIndex(game.getPacmanCurrentNodeIndex(),targetNodeIndices,DM.PATH);
-		BehaviorTreeManager.getInstance().setNextMove(game.getNextMoveTowardsTarget(game.getPacmanCurrentNodeIndex(),closestPill,DM.PATH));
+		BTManager.getInstance().setNextMove(game.getNextMoveTowardsTarget(game.getPacmanCurrentNodeIndex(),closestPill,DM.PATH));
 		
 		GameView.addLines(game, Color.RED, new int[] {game.getPacmanCurrentNodeIndex()} , new int[] {closestPill});
 		return true;

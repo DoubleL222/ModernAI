@@ -2,7 +2,7 @@ package luka.behaviorTrees.leafs;
 
 import java.util.Vector;
 
-import luka.behaviorTrees.BehaviorTreeManager;
+import luka.behaviorTrees.BTManager;
 import luka.behaviorTrees.LeafNode;
 import pacman.game.Constants.MOVE;
 import pacman.game.Game;
@@ -22,7 +22,7 @@ public class EvaluateBestDirection extends LeafNode {
 
 	@Override
 	public boolean Activate() {
-		game = BehaviorTreeManager.getInstance().getGame();
+		game = BTManager.getInstance().getGame();
 		int currentNode = game.getPacmanCurrentNodeIndex();
 		MOVE[] possibleMoves = game.getPossibleMoves(currentNode);
 		//game.getNeighbour(currentNode, moveToBeMade)

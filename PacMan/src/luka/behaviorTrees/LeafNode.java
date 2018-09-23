@@ -1,6 +1,6 @@
 package luka.behaviorTrees;
 
-public abstract class LeafNode extends BehaviorTreeNode {
+public abstract class LeafNode extends BTNode {
 
 	public LeafNode() {
 		super();
