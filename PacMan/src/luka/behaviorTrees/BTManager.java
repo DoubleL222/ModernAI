@@ -8,16 +8,16 @@ import pacman.game.Constants.GHOST;
 import pacman.game.Constants.MOVE;
 import pacman.game.Game;
 
-public class BehaviorTreeManager {
+public class BTManager {
 	private static double UPDATE_RATE = 100;
 	
 	private double nextUpdateTime = Double.MIN_VALUE;
 	
-	private static final BehaviorTreeManager instance = new BehaviorTreeManager();
+	private static final BTManager instance = new BTManager();
 	
 	private Game game;
 	
-	private BehaviorTreeNode root;
+	private BTNode root;
 	
 	private GHOST closestGhost;
 	
@@ -58,7 +58,7 @@ public class BehaviorTreeManager {
 
 	
 	//CREATE BEHAVIOUR TREE
-	private BehaviorTreeManager() 
+	private BTManager() 
 	{
 		// FIRST TREE
 		///* 
@@ -96,16 +96,16 @@ public class BehaviorTreeManager {
 		return game;
 	}
 
-	public static BehaviorTreeManager getInstance() 
+	public static BTManager getInstance() 
 	{
 		return instance;
 	}
 	
-	public BehaviorTreeNode getRoot() {
+	public BTNode getRoot() {
 		return root;
 	}
 
-	public void setRoot(BehaviorTreeNode root) {
+	public void setRoot(BTNode root) {
 		this.root = root;
 	}
 	

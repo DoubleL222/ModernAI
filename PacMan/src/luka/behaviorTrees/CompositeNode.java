@@ -2,23 +2,23 @@ package luka.behaviorTrees;
 
 import java.util.Vector;
 
-import luka.behaviorTrees.BehaviorTreeNode;
+import luka.behaviorTrees.BTNode;
 
-public abstract class CompositeNode extends BehaviorTreeNode{
+public abstract class CompositeNode extends BTNode{
 	protected class ChildPointer
 	{
-		public ChildPointer(BehaviorTreeNode _child)
+		public ChildPointer(BTNode _child)
 		{
 			this.child = _child;
 			this.decorators = null;
 		}
-		public ChildPointer(BehaviorTreeNode _child, Vector<DecoratorNode> _decorators) 
+		public ChildPointer(BTNode _child, Vector<DecoratorNode> _decorators) 
 		{
 			this.child = _child;
 			this.decorators = _decorators;
 		}
 		
-		public BehaviorTreeNode child;
+		public BTNode child;
 		public Vector<DecoratorNode> decorators;
 	}
 	
@@ -29,12 +29,12 @@ public abstract class CompositeNode extends BehaviorTreeNode{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void AddChild(BehaviorTreeNode _node) 
+	public void AddChild(BTNode _node) 
 	{
 		children.add(new ChildPointer(_node));
 	}
 	
-	public void AddChildWithDecorator(BehaviorTreeNode _node, Vector<DecoratorNode> _decorator) 
+	public void AddChildWithDecorator(BTNode _node, Vector<DecoratorNode> _decorator) 
 	{
 		children.addElement(new ChildPointer(_node, _decorator));
 	}

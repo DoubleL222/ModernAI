@@ -1,6 +1,6 @@
 package luka.behaviorTrees;
 
-public abstract class BehaviorTreeNode {
+public abstract class BTNode {
 	public enum NodeType 
 	{
 		Leaf,
@@ -27,7 +27,7 @@ public abstract class BehaviorTreeNode {
 	
 	public abstract boolean Activate();
 	
-	public BehaviorTreeNode() {};
+	public BTNode() {};
 }
 
 

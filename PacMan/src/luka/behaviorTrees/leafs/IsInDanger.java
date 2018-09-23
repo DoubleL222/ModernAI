@@ -2,7 +2,7 @@ package luka.behaviorTrees.leafs;
 
 import java.util.Random;
 
-import luka.behaviorTrees.BehaviorTreeManager;
+import luka.behaviorTrees.BTManager;
 import luka.behaviorTrees.LeafNode;
 import pacman.game.Constants.GHOST;
 import pacman.game.Game;
@@ -20,7 +20,7 @@ public class IsInDanger extends LeafNode {
 		int rnd = new Random().nextInt(GHOST.values().length);
 		GHOST closestGhost = GHOST.values()[rnd];
 		
-		Game game = BehaviorTreeManager.getInstance().getGame();
+		Game game = BTManager.getInstance().getGame();
 		int pacmanNodeIndex = game.getPacmanCurrentNodeIndex();
 
 		for(GHOST ghost : GHOST.values()) 
@@ -37,23 +37,23 @@ public class IsInDanger extends LeafNode {
 		
 		if(minDistance < 0 || minDistance == Integer.MAX_VALUE) 
 		{
-			BehaviorTreeManager.getInstance().setRunning(false);
+			BTManager.getInstance().setRunning(false);
 			return false;
 		}
 		
-		BehaviorTreeManager.getInstance().setClosestGhost(closestGhost);
+		BTManager.getInstance().setClosestGhost(closestGhost);
 		
 		if(minDistance <= minDistForDanger) 
 		{
 			System.out.println("IS IN DANGER");
-			BehaviorTreeManager.getInstance().setRunning(true);
-			BehaviorTreeManager.getInstance().setRunningStartTime(System.currentTimeMillis());
+			BTManager.getInstance().setRunning(true);
+			BTManager.getInstance().setRunningStartTime(System.currentTimeMillis());
 			//System.out.print("current time in milis " + System.currentTimeMillis());
 			return true;
 		}
 		else 
 		{
-			BehaviorTreeManager.getInstance().setRunning(false);
+			BTManager.getInstance().setRunning(false);
 			return false;
 		}
 	}
