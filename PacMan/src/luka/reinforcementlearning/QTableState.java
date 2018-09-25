@@ -11,7 +11,8 @@ import pacman.game.Constants.MOVE;
 import pacman.game.Game;
 import pacman.game.internal.Ghost;
 
-public class QTableState implements Comparable<QTableState>{
+//public class QTableState implements Comparable<QTableState>{
+public class QTableState {
 	public final float MIN_GHOST_DIST = 30.0f;
 	
 	//Relative positions of closest ghosts, can be varied based on how many ghosts are closer than a minimum
@@ -115,10 +116,34 @@ public class QTableState implements Comparable<QTableState>{
 	}
 	
 	@Override
-	public int compareTo(QTableState o) {
+	public int hashCode() {
+		final int prime = 31;
+	    int result = 1;
+	    result += prime * result + closestPillDirection.hashCode();
+	    for(int[] pos : closestGhosts) 
+	    {
+		    result += prime * result + pos[0];
+		    result += prime * result + pos[1];
+	    }
+	    for(MOVE m : possibleMoves) 
+	    {
+	    	result += prime * result + m.hashCode();
+	    }
+		// TODO Auto-generated method stub
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof QTableState)) 
+		{
+
+			return false;
+		}
+		QTableState o = (QTableState) obj;
 		if(closestGhosts.size() != o.closestGhosts.size()) 
 		{
-			return -1;
+			return false;
 		}
 		else 
 		{
@@ -129,7 +154,7 @@ public class QTableState implements Comparable<QTableState>{
 					//{
 						if(!Arrays.equals(closestGhosts.get(i), o.closestGhosts.get(i))) 
 						{
-							return -1;
+							return false;
 						}
 					//}
 				}
@@ -137,12 +162,12 @@ public class QTableState implements Comparable<QTableState>{
 		}
 		if(closestPillDirection != o.closestPillDirection) 
 		{
-			return -1;
+			return false;
 		}
 		
 		if(possibleMoves.size() != o.possibleMoves.size()) 
 		{
-			return -1;
+			return false;
 		}
 		else 
 		{
@@ -150,12 +175,12 @@ public class QTableState implements Comparable<QTableState>{
 			{
 				if(possibleMoves.get(i) != o.possibleMoves.get(i)) 
 				{
-					return -1;
+					return false;
 				}
 			}
 		}
 		
-		return 0;
+		return true;
 	}
 	
 }

@@ -68,9 +68,17 @@ public class Executor
 //		exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
 //		exec.runGameTimed(new StarterPacMan(),new StarterGhosts(),visual);
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
+		
+		
+		//BEHAVIOR TREE PAC MAN
 		//exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
-		exec.runGameTimed(new RLPacMan(),new StarterGhosts(), visual);
-//		exec.runExperiment(new RLPacMan(),new StarterGhosts(), 1000);
+
+		//REINFORCEMENT LEARNING PACK PAN
+		//exec.runExperiment(new RLPacMan(true, 10000),new StarterGhosts(), 10000);		
+		//exec.runGameTimed(new RLPacMan(false),new StarterGhosts(), visual);
+		
+		
+		
 		//*/
 		
 		/*
