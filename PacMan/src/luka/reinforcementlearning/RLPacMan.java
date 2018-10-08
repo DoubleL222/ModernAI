@@ -51,6 +51,7 @@ public class RLPacMan extends Controller<MOVE> {
 		}
 		
 		RLManager.getInstance().Log(game, reward);
+
 		if(learn) {
 			System.out.println("DEATHS: "+deaths+"; maxDeaths: "+maxDeaths);
 			float chanceToGetBestMove = (float)deaths/ (float)maxDeaths;
