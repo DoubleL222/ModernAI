@@ -1,5 +1,6 @@
 package luka.behaviorTrees;
 
+import luka.behaviorTrees.leafs.EvaluateBestDirection;
 import luka.behaviorTrees.leafs.IsInDanger;
 import luka.behaviorTrees.leafs.MoveTowardsNearestPill;
 import luka.behaviorTrees.leafs.PanicRun;
@@ -61,7 +62,7 @@ public class BTManager {
 	private BTManager() 
 	{
 		// FIRST TREE
-		///* 
+		/* 
 		Selector top = new Selector();
 		Sequence dangerZone = new Sequence();
 		dangerZone.AddChild(new IsInDanger(30));
@@ -90,6 +91,21 @@ public class BTManager {
 		
 		setRoot(top);
 		*/
+		
+		//*/
+		Selector top = new Selector();
+		Sequence dangerZone = new Sequence();
+		dangerZone.AddChild(new IsInDanger(30));
+		dangerZone.AddChild(new EvaluateBestDirection());
+		
+		Sequence pillColector = new Sequence();
+		pillColector.AddChild(new MoveTowardsNearestPill());
+		
+		top.AddChild(dangerZone);
+		top.AddChild(pillColector);
+		
+		setRoot(top);
+		//*/
 	}
 	
 	public Game getGame() {

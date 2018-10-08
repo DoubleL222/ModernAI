@@ -71,11 +71,11 @@ public class Executor
 		
 		
 		//BEHAVIOR TREE PAC MAN
-		//exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
+//		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
 
 		//REINFORCEMENT LEARNING PACK PAN
-		//exec.runExperiment(new RLPacMan(true, 10000),new StarterGhosts(), 10000);		
-		//exec.runGameTimed(new RLPacMan(false),new StarterGhosts(), visual);
+		exec.runExperiment(new RLPacMan(true, 5000),new StarterGhosts(), 5000);		
+		exec.runGameTimed(new RLPacMan(false),new StarterGhosts(), visual);
 		
 		
 		

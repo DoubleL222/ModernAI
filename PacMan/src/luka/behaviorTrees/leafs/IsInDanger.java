@@ -45,7 +45,7 @@ public class IsInDanger extends LeafNode {
 		
 		if(minDistance <= minDistForDanger) 
 		{
-			System.out.println("IS IN DANGER");
+			//System.out.println("IS IN DANGER");
 			BTManager.getInstance().setRunning(true);
 			BTManager.getInstance().setRunningStartTime(System.currentTimeMillis());
 			//System.out.print("current time in milis " + System.currentTimeMillis());
