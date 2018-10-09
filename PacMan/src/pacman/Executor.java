@@ -11,6 +11,7 @@ import java.util.EnumMap;
 import java.util.Random;
 
 import luka.behaviorTrees.controller.BTPacMan;
+import luka.mcts.MCTSPacMan;
 import luka.reinforcementlearning.RLManager;
 import luka.reinforcementlearning.RLPacMan;
 import pacman.controllers.Controller;
@@ -71,8 +72,13 @@ public class Executor
 		
 		
 		//BEHAVIOR TREE PAC MAN
-		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
-
+//		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
+		
+		//MONTE CARLO PAC MAN
+		//exec.runGameTimed(new MCTSPacMan(),new StarterGhosts(),visual);
+		boolean fixedTime=true;
+		exec.runGameTimedSpeedOptimised(new MCTSPacMan(),new RandomGhosts(),fixedTime,visual);
+		
 		//REINFORCEMENT LEARNING PACK PAN
 		//exec.runExperiment(new RLPacMan(true, 5000),new StarterGhosts(), 5000);		
 		//exec.runGameTimed(new RLPacMan(false),new StarterGhosts(), visual);
