@@ -61,11 +61,23 @@ public class BTManager {
 	//CREATE BEHAVIOUR TREE
 	private BTManager() 
 	{
+		// BASE TREE
+		///* 
+		Selector top = new Selector();
+		
+		Sequence pillColector = new Sequence();
+		pillColector.AddChild(new MoveTowardsNearestPill());
+		
+		top.AddChild(pillColector);
+		
+		setRoot(top);
+		//*/
+		
 		// FIRST TREE
 		/* 
 		Selector top = new Selector();
 		Sequence dangerZone = new Sequence();
-		dangerZone.AddChild(new IsInDanger(30));
+		dangerZone.AddChild(new IsInDanger(15));
 		dangerZone.AddChild(new RunFromClossestGhost());
 		
 		Sequence pillColector = new Sequence();
@@ -92,7 +104,7 @@ public class BTManager {
 		setRoot(top);
 		*/
 		
-		//*/
+		/*
 		Selector top = new Selector();
 		Sequence dangerZone = new Sequence();
 		dangerZone.AddChild(new IsInDanger(30));
@@ -105,7 +117,7 @@ public class BTManager {
 		top.AddChild(pillColector);
 		
 		setRoot(top);
-		//*/
+		*/
 	}
 	
 	public Game getGame() {

@@ -75,9 +75,10 @@ public class Executor
 //		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
 		
 		//MONTE CARLO PAC MAN
+		exec.runGame(new MCTSPacMan(),new StarterGhosts(), visual, DELAY);
 		//exec.runGameTimed(new MCTSPacMan(),new StarterGhosts(),visual);
 		boolean fixedTime=true;
-		exec.runGameTimedSpeedOptimised(new MCTSPacMan(),new RandomGhosts(),fixedTime,visual);
+		//exec.runGameTimedSpeedOptimised(new MCTSPacMan(),new StarterGhosts(),fixedTime,visual);
 		
 		//REINFORCEMENT LEARNING PACK PAN
 		//exec.runExperiment(new RLPacMan(true, 5000),new StarterGhosts(), 5000);		

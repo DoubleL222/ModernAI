@@ -13,7 +13,7 @@ public class RunFromClossestGhost extends LeafNode {
 
 	@Override
 	public boolean Activate() {
-		System.out.println("Run From Closest Ghost");
+		//System.out.println("Run From Closest Ghost");
 		GHOST closestGhost = BTManager.getInstance().getClosestGhost();
 		Game game = BTManager.getInstance().getGame();
 		if(closestGhost != null) 

@@ -30,7 +30,7 @@ public class MoveTowardsNearestPill extends LeafNode{
 		int closestPill = game.getClosestNodeIndexFromNodeIndex(game.getPacmanCurrentNodeIndex(),targetNodeIndices,DM.PATH);
 		BTManager.getInstance().setNextMove(game.getNextMoveTowardsTarget(game.getPacmanCurrentNodeIndex(),closestPill,DM.PATH));
 		
-		GameView.addLines(game, Color.RED, new int[] {game.getPacmanCurrentNodeIndex()} , new int[] {closestPill});
+		//GameView.addLines(game, Color.RED, new int[] {game.getPacmanCurrentNodeIndex()} , new int[] {closestPill});
 		return true;
 	}
 
