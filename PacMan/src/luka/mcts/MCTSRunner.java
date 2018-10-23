@@ -9,7 +9,7 @@ import pacman.controllers.examples.StarterGhosts;
 import pacman.game.Game;
 import static pacman.game.Constants.*;
 
-public class MCTSRunner implements Runnable{
+public class MCTSRunner{
 
 	public MCTSRunner(MCTSNode<Game> _tree_root, Game game) {
 		super();
@@ -49,35 +49,39 @@ public class MCTSRunner implements Runnable{
 	
     public synchronized int GetBestMove() 
     {
-    	System.out.println("-------------------------------------------Gettin' best move-----------------------------------------");
+    	//System.out.println("-------------------------------------------Gettin' best move-----------------------------------------");
     	return 0;
     }
     
-	@Override
-	public void run() {
-		float startTime = System.currentTimeMillis();
+	public MOVE GetMove() {
+		long startTime = System.currentTimeMillis();
 		// TODO Auto-generated method stub
-		//while((startTime - System.currentTimeMillis()) < (0.9 * DELAY) && keepRunning()) 
-		while(true)
+		while((System.currentTimeMillis() - startTime) < (500) && keepRunning()) 
+		//while(true)
 		{
-			while(keepRunning()) 
-			{
-	            // vl TREEPOLICY(v0)
-				MCTSNode<Game> selectedChild = TreePolicy(tree_root);
-				
-				//delta = DEFAULTPOLICY(s(vl))
-				int delta = selectedChild.DefaultPolicy();
-				
-				Backup(selectedChild, delta);
-				
-				next_state = BestChild(tree_root, Cp);
-				next_move = next_state.parent_action;
-			}
+			//System.out.println("Current Time: "+System.currentTimeMillis());
+			//System.out.println("Curr - start: " + (System.currentTimeMillis() - startTime) +"; DELAY: " + (DELAY));
+            // vl TREEPOLICY(v0)
+			MCTSNode<Game> selectedChild = TreePolicy(tree_root);
+			
+			//delta = DEFAULTPOLICY(s(vl))
+			int delta = selectedChild.DefaultPolicy();
+			
+			Backup(selectedChild, delta);
         }
+		
+		//System.out.println(" ENDING WHILE LOOP ");
+		
+		next_state = BestChild(tree_root, Cp);
+		next_move = next_state.parent_action;
+		
+		return next_move;
 	}
 	
 	MCTSNode<Game> TreePolicy(MCTSNode<Game> v) 
 	{
+		//System.out.println("IN TREE POLICY");
+		
 		StarterGhosts ghosts = new StarterGhosts();
 		ArrayList<MOVE> movesToParent = new ArrayList<MOVE>();
 		MCTSNode _parent = v;
@@ -87,6 +91,8 @@ public class MCTSRunner implements Runnable{
 			_parent = _parent.parent;
 		}
 		
+		//System.out.println("AFTER WHILE");
+		
 		Game game = ((Game)_parent.game_state).copy();
 		
 		for(int i = movesToParent.size()-1; i>=0; i--) 
@@ -95,7 +101,7 @@ public class MCTSRunner implements Runnable{
 		}
 		
 		//while(!v.game_state.wasPacManEaten()) 
-		while(game.wasPacManEaten()) 
+		while(!game.wasPacManEaten()) 
 		{
 			boolean isVFullyExpanded = true;
 			if(v.children != null) 
@@ -119,26 +125,29 @@ public class MCTSRunner implements Runnable{
 			
 			if(!isVFullyExpanded) 
 			{
+			//	System.out.println("NOT IS FULLY EXPANDED");
 				return Expand(v);
 			}
 			else 
 			{
+			//	System.out.println("IS FULLY EXPANDED");
+				
 				v = BestChild(v, Cp);
 				if(v == null) 
 				{
-					System.out.println("PARENT ACTION NULL");
+				//	System.out.println("PARENT ACTION NULL");
 				} 
 				else 
 				{
-					System.out.println("WUTT THEN");
+				//	System.out.println("WUTT THEN");
 				}
 				if(v.parent_action == null) 
 				{
-					System.out.println("PARENT ACTION NULL");
+				//	System.out.println("PARENT ACTION NULL");
 				} 
 				else 
 				{
-					System.out.println("WUTT THEN");
+				//	System.out.println("WUTT THEN");
 				}
 				game.advanceGame(v.parent_action, ghosts.getMove(game, System.currentTimeMillis()));
 			}
@@ -170,23 +179,25 @@ public class MCTSRunner implements Runnable{
 		MOVE nextMove = null;
 		for (Entry<MOVE, MCTSNode<Game>> entry : v.children.entrySet()) {
 			//Left part (part 1)
-			if(entry.getValue() == null) 
+			if(entry.getValue() != null) 
 			{
-				System.out.println("Weird");
+				float currValue = (Math.max(1, entry.getValue().reward) / Math.max(1, entry.getValue().timesvisited));
+				//Right part (part 2)
+				currValue += Cp * Math.sqrt((2*Math.log(v.timesvisited))/ Math.max(1, entry.getValue().timesvisited));
+				if(currValue > maxValue) 
+				{
+					nextMove = entry.getKey();
+					maxValue = currValue;
+				}
 			}
 			else 
 			{
-				
+				System.out.println("is null --------------");
 			}
-			float currValue = (entry.getValue().reward / Math.max(1, entry.getValue().timesvisited));
-			//Right part (part 2)
-			currValue += Cp * Math.sqrt((2*Math.log(v.timesvisited))/ Math.max(1, entry.getValue().timesvisited));
-			
-			if(currValue > maxValue) 
-			{
-				nextMove = entry.getKey();
-				maxValue = currValue;
-			}
+		}
+		if(nextMove == null) 
+		{
+			//System.out.println("NEXT MOVE IS NULL");
 		}
 		return v.children.get(nextMove);
 	}

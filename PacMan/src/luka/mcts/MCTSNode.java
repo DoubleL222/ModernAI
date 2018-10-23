@@ -22,7 +22,7 @@ public class MCTSNode<T> {
 	}};
 //	public List<MCTSNode<T>> children = new ArrayList<MCTSNode<T>>();
 	public MCTSNode<T> parent = null;
-	public MOVE parent_action;
+	public MOVE parent_action = null;
 	public float reward = 0;
 	public int timesvisited = 0;
 	

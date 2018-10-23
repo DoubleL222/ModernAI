@@ -72,11 +72,11 @@ public class RLManager {
     	}
     	if(index == -1) 
     	{
-    		System.out.println("#############--------------PANIC: MINUS ONE-------------------#############");
+    		//System.out.println("#############--------------PANIC: MINUS ONE-------------------#############");
     		index = 0;
     	}else if(index >4) 
     	{
-    		System.out.println("#############--------------PANIC: GREATER THAN FOUR-------------------#############");
+    		//System.out.println("#############--------------PANIC: GREATER THAN FOUR-------------------#############");
     	}
     	return allMoves[index];
         //return 0;
@@ -131,16 +131,16 @@ public class RLManager {
 				//System.out.println("NEW STATE:");
 				float[] newValues = new float[MOVE.values().length];
 				qTable.put(state, newValues);
-				state.PrintQTable();
+				//state.PrintQTable();
 			}
 			else 
 			{
 				float[] qValues = GetValues(state);
 				for(float _v : qValues) 
 				{
-					System.out.print(_v +" ,");
+					//System.out.print(_v +" ,");
 				}
-				System.out.println();
+				//System.out.println();
 			}
 			
 			float[] prevPrevQValues = GetValues(prevPrevState);

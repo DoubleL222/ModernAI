@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Random;
 
+import luka.behaviorTrees.BTManager;
 import luka.behaviorTrees.controller.BTPacMan;
 import luka.mcts.MCTSPacMan;
 import luka.reinforcementlearning.RLManager;
@@ -71,22 +72,26 @@ public class Executor
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
 		
 		
+		//LUKA BOTS
+		/*
 		//BEHAVIOR TREE PAC MAN
-//		exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
+		BTManager.getInstance().SetFirstTree();
+		for(int i = 0; i<10; i++)
+			exec.runGameTimed(new BTPacMan(),new StarterGhosts(),visual);
 		
-		//MONTE CARLO PAC MAN
-		exec.runGame(new MCTSPacMan(),new StarterGhosts(), visual, DELAY);
-		//exec.runGameTimed(new MCTSPacMan(),new StarterGhosts(),visual);
-		boolean fixedTime=true;
-		//exec.runGameTimedSpeedOptimised(new MCTSPacMan(),new StarterGhosts(),fixedTime,visual);
-		
+		*/
 		//REINFORCEMENT LEARNING PACK PAN
-		//exec.runExperiment(new RLPacMan(true, 5000),new StarterGhosts(), 5000);		
-		//exec.runGameTimed(new RLPacMan(false),new StarterGhosts(), visual);
+		exec.runExperiment(new RLPacMan(true, 10000),new StarterGhosts(), 10000);		
+		for(int i = 0; i<10; i++)
+			exec.runGameTimed(new RLPacMan(false),new StarterGhosts(), visual);
 		
+		/*
+		//MONTE CARLO PAC MAN
+		BTManager.getInstance().SetBasicTree();
+		for(int i = 0; i<10; i++)
+			exec.runGame(new MCTSPacMan(),new StarterGhosts(), visual, DELAY);
 		
-		
-		//*/
+		//
 		
 		/*
 		//run the game in asynchronous mode but advance as soon as both controllers are ready  - this is the mode of the competition.
@@ -211,7 +216,7 @@ public class Executor
 	        if(visual)
 	        	gv.repaint();
 		}
-		
+		System.out.println("Score: "+game.getScore());
 		pacManController.terminate();
 		ghostController.terminate();
 	}

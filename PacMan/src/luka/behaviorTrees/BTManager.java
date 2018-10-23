@@ -58,11 +58,39 @@ public class BTManager {
 	}
 
 	
+	public void SetBasicTree() 
+	{
+		Selector top = new Selector();
+		
+		Sequence pillColector = new Sequence();
+		pillColector.AddChild(new MoveTowardsNearestPill());
+		
+		top.AddChild(pillColector);
+		
+		setRoot(top);
+	}
+	
+	public void SetFirstTree() 
+	{
+		Selector top = new Selector();
+		Sequence dangerZone = new Sequence();
+		dangerZone.AddChild(new IsInDanger(15));
+		dangerZone.AddChild(new RunFromClossestGhost());
+		
+		Sequence pillColector = new Sequence();
+		pillColector.AddChild(new MoveTowardsNearestPill());
+		
+		top.AddChild(dangerZone);
+		top.AddChild(pillColector);
+		
+		setRoot(top);
+	}
+	
 	//CREATE BEHAVIOUR TREE
 	private BTManager() 
 	{
 		// BASE TREE
-		///* 
+		/* 
 		Selector top = new Selector();
 		
 		Sequence pillColector = new Sequence();
