@@ -1,6 +1,6 @@
 # ModernAI
 
-This is a java project that contains a Pac-Man game framework.
+This is a java project developed for a course (ModernAI), that contains a Pac-Man game framework.
 
 The work I've done is implement an AI for playing Pac-Man.
 
